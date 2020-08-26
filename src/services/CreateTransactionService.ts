@@ -19,14 +19,14 @@ class CreateTransactionService {
     const { total } = this.transactionsRepository.getBalance();
 
     if (type == "outcome" && value > total) {
-      throw Error("teste");
-    }
+      throw Error("Total expenses cannot be greater than the cash value");
+    };
 
     const transaction = this.transactionsRepository.create({
       title,
       value,
       type
-    })
+    });
 
     return transaction;
   }
